@@ -22,8 +22,10 @@ eval $(opam config env)
 opam depext -y conf-m4
 opam pin add travis-opam https://github.com/${fork_user}/ocaml-ci-scripts.git#${fork_branch}
 
-if [ -x .travis-extra.sh ]; then
-    source .travis-extra.sh
+echo Trying to run .travis-extra.sh
+
+if [ -f .travis-extra.sh ]; then
+    sh .travis-extra.sh
 fi
 
 echo -en "travis_fold:end:prepare.ci\r"
